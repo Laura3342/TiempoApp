@@ -40,16 +40,24 @@ function pintarClimaActual(d) {
 
   // Se muestra los datos y las imagenes
   box.innerHTML = `
-    <div class="climaActual">
-      <h2>Clima en ${d.name}</h3>
+    <div class="flex flex-col items-center bg-black/20 rounded-2xl p-6 shadow-xl mb-6">
       <img src="https://openweathermap.org/img/wn/${imagen}@2x.png" alt="${estado}">
-      <p>☁️ Estado: ${estado}</p>
-      <p>🌡️ Temperatura: ${temp}ºC</p>
-      <p>💧 Humedad: ${humedad}%</p>
-      <p>🍃 Velocidad del viento: ${viento} km/h</p>
+      <p class= "text-5xl font-bold">${temp}ºC</p>
+      <h2 class="text-2xl font-bold mb-2 text-white"> ${d.name}</h3>
+      
+      <div class="flex justify-between w-full mt-4 px-4">
+        <div class="flex flex-col items-center">
+          <p class="text-2xl font-bold">💧${humedad}%</p>
+          <span class="text-sm text-gray-200">Humedad</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <p class="text-2xl font-bold">🍃${viento} km/h</p>
+          <span class="text-sm text-gray-200">Viento</span>
+        </div>
+      </div>
     </div> 
-    <h3>Pronóstico próximos 4 días:</h3>
-    <div id="pronostico" class="pronosticoContainer"></div>
+    <h3 class="flex justify-center font-bold text-xl mb-7">Pronóstico próximos 4 días:</h3>
+    <div id="pronostico" class="flex gap-4 overflow-x-auto pb-2 justify-center"></div>
   `;
 }
 
@@ -84,9 +92,17 @@ function pintarClimaFuturo(data){
     const estado = item.weather[0].description;
 
     const card = document.createElement('div');
+    card.className = `
+    flex-shrink-0
+    bg-black/20
+    rounded-2xl p-4 shadow-lg text-center w-40
+      
+    `;
+
+
     card.classList.add('diaCard');
     card.innerHTML = `
-      <p class= "dia">${diaSemana}</p>
+      <p class="font-semibold text-gray-800 mb-1 text-white">${diaSemana}</p>
       <img src="https://openweathermap.org/img/wn/${icono}@2x.png" alt="${estado}">
       <p class ="temp">${temp} °C</p>
       <p class ="estado">${estado}</p>

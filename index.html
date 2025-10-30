@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Clima con Fetch</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Clima con Fetch</title>s
   <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <script type="text/javascript" 
 src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-eforma.js">
 </script>
@@ -17,10 +17,20 @@ src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/script
 src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/cookies/cookies-html.js">
 </script>
 </head>
-<body>
-  <input type="text" id="ciudad" placeholder="Madrid">
-  <button onclick="obtenerClima()">🌤️ Ver clima</button>
-  <div id="resultado" ></div>
+
+<body class="relative bg-cover bg-center min-h-screen flex flex-col items-center justify-start"
+    style="background-image: url('/images/bg_appTiempo.jpg');">
+  
+  
+  <div class="flex w-full max-w-md mt-10 gap-2">
+    <input type="text" id="ciudad" placeholder="Madrid"
+      class="flex-1 bg-white p-2 h-10 rounded-md border border-gray-900 text-base">
+    <button onclick="obtenerClima()"
+      class="p-3 bg-black/70 text-white rounded-md hover:bg-black/95 transition-colors duration-300">
+    🔍 Ver clima
+    </button>
+</div>
+  <div id="resultado" class="hidden mt-10 w-4/5 md:w-4/5 lg:w-3/5 bg-black/20 backdrop-blur-sm rounded-2xl text-white shadow-xl p-5"  ></div>
   
 
 </body>
